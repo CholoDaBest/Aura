@@ -1,0 +1,23 @@
+{
+  "name": "aura-demo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.0.12"
+  },
+  "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "gsap": "^3.15.0",
+    "lucide": "^1.17.0",
+    "multer": "^2.1.1",
+    "split-type": "^0.3.4"
+  }
+}

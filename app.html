@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aura | Studio Workspace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Atmospheric Backgrounds -->
+    <div class="ambient-glow"></div>
+    <div class="grid-bg"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo"><a href="/" style="color:inherit; text-decoration:none;">AURA</a></div>
+      <div class="nav-links">
+        <a href="/dashboard.html">Dashboard</a>
+        <a href="#">Projects</a>
+      </div>
+      <div class="nav-actions">
+        <div class="user-profile" style="display:flex; align-items:center; gap:10px;">
+           <div class="avatar" style="width:32px; height:32px; background:#fff; color:#000; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:12px;">AD</div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Upload Section -->
+    <section class="upload-section reveal-element" id="upload" style="margin-top: 8rem; min-height: 80vh;">
+      <div class="style-selector-container">
+        <div class="style-selector-track" id="styleSelectorTrack">
+          <button class="style-pill active" data-style="modern-minimalist">Modern Minimalist</button>
+          <button class="style-pill" data-style="industrial">Industrial</button>
+          <button class="style-pill" data-style="japandi">Japandi</button>
+          <button class="style-pill" data-style="brutalist">Brutalist</button>
+          <button class="style-pill" data-style="midcentury">Mid-Century</button>
+        </div>
+      </div>
+      <br>
+      <div class="upload-container" id="drop-zone">
+        <div class="upload-content" id="upload-content">
+          <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <h2 class="upload-title">Drag & Drop your sketch here</h2>
+          <p class="upload-subtitle">or click to browse from your device</p>
+          <input type="file" id="file-input" accept="image/*" style="display: none;" />
+        </div>
+        <div id="loading-state" style="display: none; position: absolute; inset: 0; align-items: center; justify-content: center; background: rgba(9,9,11,0.9); z-index: 20;">
+          <div style="display: flex; gap: 1rem; align-items: center; padding: 1rem; background: #09090b; border: 1px solid #27272a; border-radius: 12px; min-width: 250px;">
+            <div style="width: 2rem; height: 2rem; background: #27272a; border-radius: 6px; animation: pulse 2s infinite;"></div>
+            <div style="position: relative; height: 1.5rem; flex: 1; overflow: hidden; pointer-events: none;">
+              <span class="loading-tooltip" style="position: absolute; inset: 0; color: #d4d4d8; opacity: 0; font-family: 'Space Grotesk', sans-serif;">Analyzing geometry...</span>
+              <span class="loading-tooltip" style="position: absolute; inset: 0; color: #d4d4d8; opacity: 0; font-family: 'Space Grotesk', sans-serif;">Calculating lighting...</span>
+              <span class="loading-tooltip" style="position: absolute; inset: 0; color: #d4d4d8; opacity: 0; font-family: 'Space Grotesk', sans-serif;">Baking textures...</span>
+              <span class="loading-tooltip" style="position: absolute; inset: 0; color: #d4d4d8; opacity: 0; font-family: 'Space Grotesk', sans-serif;">Finalizing scene...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inpainting Canvas Workspace -->
+        <div id="canvas-workspace" style="display: none;" class="canvas-workspace">
+          <div class="canvas-layer-container">
+            <canvas id="image-canvas"></canvas>
+            <canvas id="mask-canvas"></canvas>
+          </div>
+          <!-- Glassmorphic Toolbar -->
+          <div class="inpainting-toolbar">
+            <div class="toolbar-group">
+              <button id="btn-brush" class="toolbar-btn active" title="Brush">🖌️</button>
+              <button id="btn-eraser" class="toolbar-btn" title="Eraser">🧹</button>
+            </div>
+            <div class="toolbar-group brush-size-group">
+              <span style="font-size: 0.75rem; color: var(--text-secondary);">Size</span>
+              <input type="range" id="brush-size" min="5" max="150" value="40" class="brush-slider">
+            </div>
+            <div class="toolbar-group">
+              <button id="btn-clear-mask" class="toolbar-btn" title="Clear Mask">🗑️</button>
+            </div>
+            <div class="toolbar-group generate-group">
+              <input type="text" id="prompt-input" class="prompt-input" placeholder="Paint an area, then describe changes...">
+              <button id="btn-generate-ai" class="cta-button primary toolbar-generate">Generate</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Custom Brush Cursor Ring -->
+      <div id="brush-cursor" class="brush-cursor"></div>
+    </section>
+
+    <!-- Result Section (Hidden initially) -->
+    <section class="result-section" id="result-section" style="display: none;">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">Your Vision, Realized.</h2>
+      
+      <div class="slider-container" id="slider-container">
+        <!-- Before Image (Sketch) -->
+        <img id="slider-before" src="" alt="Before Sketch" class="slider-img" />
+        
+        <!-- After Image (Render) -->
+        <img id="slider-after" src="/public/hero.png" alt="After Render" class="slider-img slider-after" />
+        
+        <!-- Slider Handle -->
+        <div class="slider-handle" id="slider-handle">
+          <div class="slider-button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
+        </div>
+      </div>
+      
+      <div class="result-actions">
+        <button class="cta-button secondary">Download HD Render</button>
+        <button class="cta-button primary">Share Link</button>
+      </div>
+    </section>
+
+    <!-- Pro Workspace Overlay -->
+    <div id="pro-workspace-overlay" style="display: none;">
+      <nav class="pro-workspace-nav">
+        <button class="btn-close" id="pro-workspace-close">Close</button>
+        <div class="nav-brand">AURA PRO</div>
+        <button class="btn-generate cta-button primary" id="pro-workspace-generate">Generate</button>
+      </nav>
+      
+      <div class="pro-workspace-body">
+        <main id="pro-canvas-container">
+          <canvas id="pro-image-canvas"></canvas>
+        </main>
+        
+        <aside class="pro-workspace-sidebar">
+          <h2>Pro Controls</h2>
+          
+          <div class="control-group">
+            <label for="ai-creativity">AI Creativity (Control Scale)</label>
+            <input type="range" id="ai-creativity" min="0" max="100" value="50">
+          </div>
+          
+          <div class="control-group">
+            <label for="lighting">Lighting Override</label>
+            <select id="lighting">
+              <option value="none">Auto (from sketch)</option>
+              <option value="studio">Studio</option>
+              <option value="cinematic">Cinematic</option>
+              <option value="natural">Natural Sunlight</option>
+              <option value="neon">Neon Cyberpunk</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label>Output Resolution</label>
+            <div class="resolution-options">
+              <label class="res-radio">
+                <input type="radio" name="resolution" value="4k" checked> 4K
+              </label>
+              <label class="res-radio">
+                <input type="radio" name="resolution" value="8k"> 8K
+              </label>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

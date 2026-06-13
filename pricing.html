@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aura AI - Pricing</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Atmospheric Backgrounds -->
+    <div class="ambient-glow"></div>
+    <div class="grid-bg"></div>
+    <div class="grid-laser"></div>
+    <div class="grid-laser-2"></div>
+    <div class="glow-orb orb-left"></div>
+    <div class="glow-orb orb-right"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo"><a href="/" style="color:inherit; text-decoration:none;">AURA</a></div>
+      <div class="nav-links">
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/dashboard.html" class="login-btn">Log in</a>
+      </div>
+      <div class="nav-actions">
+        <button class="cta-button desktop-cta">Start Free Trial</button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn-pricing">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu-pricing">
+      <div class="mobile-menu-header">
+        <div class="logo">AURA</div>
+        <button class="mobile-close-btn" id="mobile-close-btn-pricing">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/dashboard.html">Log in</a>
+        <button class="cta-button primary" style="margin-top: 2rem;">Start Free Trial</button>
+      </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section reveal-element" style="padding-top: 8rem;">
+      <div class="pricing-header">
+        <h2 class="section-title ">Simple, transparent pricing.</h2>
+        <p class="section-text">Start for free. Upgrade when you need production-ready renders.</p>
+        
+        <div class="billing-toggle-wrapper">
+          <span class="toggle-label active" id="label-monthly">Monthly</span>
+          <button class="billing-toggle" id="billing-toggle">
+            <div class="toggle-knob"></div>
+          </button>
+          <span class="toggle-label" id="label-yearly">Yearly <span class="discount-badge">Save 20%</span></span>
+        </div>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3 class="tier-name">Sketcher</h3>
+          <div class="tier-price"><span class="currency">$</span><span class="price-val">0</span><span class="period">/mo</span></div>
+          <p class="tier-desc">Perfect for hobbyists and trying out the engine.</p>
+          <ul class="tier-features">
+            <li>5 renders per month</li>
+            <li>720p export quality</li>
+            <li>Basic modern style</li>
+            <li>Community support</li>
+          </ul>
+          <button class="cta-button">Start for free</button>
+        </div>
+
+        <div class="pricing-card highlighted">
+          <div class="highlight-bar"></div>
+          <h3 class="tier-name">Architect</h3>
+          <div class="tier-price"><span class="currency">$</span><span class="price-val" data-monthly="29" data-yearly="24">29</span><span class="period">/mo</span></div>
+          <p class="tier-desc">For professionals who need pitch-perfect visuals.</p>
+          <ul class="tier-features">
+            <li>Unlimited renders</li>
+            <li>4K export quality</li>
+            <li>All architectural styles</li>
+            <li>Commercial license</li>
+            <li>Priority generation queue</li>
+          </ul>
+          <button class="cta-button primary">Upgrade to Architect</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="logo">AURA</div>
+      <p>&copy; 2026 Aura AI Architecture.</p>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
