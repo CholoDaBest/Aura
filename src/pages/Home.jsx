@@ -99,37 +99,46 @@ export default function Home() {
     // Custom Cursor Follower
     // ----------------------------------
     const cursorFollower = document.getElementById('cursor-follower');
+    let onMouseMove;
+    let tickerFn;
+    
     if (cursorFollower) {
       let mouseX = 0, mouseY = 0;
       let followerX = 0, followerY = 0;
 
-      window.addEventListener('mousemove', (e) => {
+      onMouseMove = (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        if(e.target.closest('a, button, .style-pill, .aura-card, .slider-container, .upload-container')) {
-          cursorFollower.classList.add('active');
-        } else {
-          cursorFollower.classList.remove('active');
+        if (e.target && typeof e.target.closest === 'function') {
+          if (e.target.closest('a, button, .style-pill, .aura-card, .slider-container, .upload-container')) {
+            cursorFollower.classList.add('active');
+          } else {
+            cursorFollower.classList.remove('active');
+          }
         }
-      });
+      };
+      
+      window.addEventListener('mousemove', onMouseMove);
 
-      gsap.ticker.add(() => {
+      tickerFn = () => {
         followerX += (mouseX - followerX) * 0.15;
         followerY += (mouseY - followerY) * 0.15;
         gsap.set(cursorFollower, { x: followerX, y: followerY });
-      });
+      };
+      gsap.ticker.add(tickerFn);
     }
 
     // ----------------------------------
     // Magnetic Physics Buttons
     // ----------------------------------
     const magneticButtons = document.querySelectorAll('.cta-button, .login-btn');
+    const magneticCleanup = [];
     
     magneticButtons.forEach(btn => {
       const xTo = gsap.quickTo(btn, "x", { duration: 0.8, ease: "elastic.out(1, 0.3)" });
       const yTo = gsap.quickTo(btn, "y", { duration: 0.8, ease: "elastic.out(1, 0.3)" });
 
-      btn.addEventListener('mousemove', (e) => {
+      const handleMouseMove = (e) => {
         const rect = btn.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
@@ -138,11 +147,19 @@ export default function Home() {
         
         xTo(distanceX);
         yTo(distanceY);
-      });
+      };
 
-      btn.addEventListener('mouseleave', () => {
+      const handleMouseLeave = () => {
         xTo(0);
         yTo(0);
+      };
+
+      btn.addEventListener('mousemove', handleMouseMove);
+      btn.addEventListener('mouseleave', handleMouseLeave);
+      
+      magneticCleanup.push(() => {
+        btn.removeEventListener('mousemove', handleMouseMove);
+        btn.removeEventListener('mouseleave', handleMouseLeave);
       });
     });
 
@@ -150,6 +167,9 @@ export default function Home() {
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
       if (typeof lenis !== 'undefined') lenis.destroy();
+      if (onMouseMove) window.removeEventListener('mousemove', onMouseMove);
+      if (tickerFn) gsap.ticker.remove(tickerFn);
+      magneticCleanup.forEach(cleanup => cleanup());
     };
   }, []);
 
