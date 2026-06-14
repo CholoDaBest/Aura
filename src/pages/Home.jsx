@@ -1303,5 +1303,6 @@ window.addEventListener('touchend', () => {
 
     
     </div>
+    </>
   );
 }
