@@ -237,7 +237,7 @@ const AppPage = () => {
           <a href="/" style={{ color: 'inherit', textDecoration: 'none' }}>AURA</a>
         </div>
         <div className="nav-links">
-          <a href="/dashboard.html">Dashboard</a>
+          <a href="/dashboard">Dashboard</a>
           <a href="#">Projects</a>
         </div>
         <div className="nav-actions">

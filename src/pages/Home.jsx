@@ -904,8 +904,8 @@ window.addEventListener('touchend', () => {
       <div className="nav-links">
         <a href="#how-it-works">How it works</a>
         <a href="#features">Features</a>
-        <a href="/pricing.html">Pricing</a>
-        <a href="/dashboard.html" className="login-btn">Log in</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/dashboard" className="login-btn">Log in</a>
       </div>
       <div className="nav-actions">
         <a href="#upload" className="cta-button desktop-cta" style={{textDecoration: `none`, display: `flex`, alignItems: `center`, justifyContent: `center`}}>Start Free Trial</a>
@@ -926,8 +926,8 @@ window.addEventListener('touchend', () => {
       <div className="mobile-nav-links">
         <a href="#how-it-works">How it works</a>
         <a href="#features">Features</a>
-        <a href="/pricing.html">Pricing</a>
-        <a href="/dashboard.html">Log in</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/dashboard">Log in</a>
         <button className="cta-button primary" style={{marginTop: `2rem`}}>Start Free Trial</button>
       </div>
     </div>
