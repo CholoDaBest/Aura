@@ -4,6 +4,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import '../style.css'; // Adjust path as needed
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer.jsx';
+import Hero from '../components/Hero.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -871,7 +874,9 @@ window.addEventListener('touchend', () => {
   }, []);
 
   return (
-    <div className="home-container">
+    <>
+      <Navbar />
+      <div className="home-container">
       {!preloaderShown && (
         <div id="preloader" className="preloader">
           <div className="preloader-logo">Aura.</div>
@@ -899,86 +904,7 @@ window.addEventListener('touchend', () => {
     <div className="custom-cursor-follower" id="custom-cursor-follower"></div>
 
     
-    <nav className="navbar">
-      <div className="logo"><a href="/" style={{color: `inherit`, textDecoration: `none`}}>AURA</a></div>
-      <div className="nav-links">
-        <a href="#how-it-works">How it works</a>
-        <a href="#features">Features</a>
-        <a href="/pricing">Pricing</a>
-        <a href="/dashboard" className="login-btn">Log in</a>
-      </div>
-      <div className="nav-actions">
-        <a href="#upload" className="cta-button desktop-cta" style={{textDecoration: `none`, display: `flex`, alignItems: `center`, justifyContent: `center`}}>Start Free Trial</a>
-        <button className="mobile-menu-btn" id="mobile-menu-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
-        </button>
-      </div>
-    </nav>
-
-    
-    <div className="mobile-menu" id="mobile-menu">
-      <div className="mobile-menu-header">
-        <div className="logo">AURA</div>
-        <button className="mobile-close-btn" id="mobile-close-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
-        </button>
-      </div>
-      <div className="mobile-nav-links">
-        <a href="#how-it-works">How it works</a>
-        <a href="#features">Features</a>
-        <a href="/pricing">Pricing</a>
-        <a href="/dashboard">Log in</a>
-        <button className="cta-button primary" style={{marginTop: `2rem`}}>Start Free Trial</button>
-      </div>
-    </div>
-
-    
-    <header className="hero">
-      <div className="hero-content">
-        <div className="badge reveal-element">Aura Engine v2.0 Live</div>
-        <h1 className="hero-title ">From Sketch to Cinematic Render.</h1>
-        <p className="hero-subtext">Instantly transform basic interior photos and drawings into hyper-realistic, high-end architectural visualizations.</p>
-        <div className="hero-actions">
-          <a href="#upload" className="cta-button primary" style={{textDecoration: `none`, display: `flex`, alignItems: `center`, justifyContent: `center`}}>Start Now</a>
-          <button className="cta-button secondary">View Gallery</button>
-        </div>
-      </div>
-      <div className="hero-image-wrapper reveal-element">
-        <img src="/hero.png" alt="Aura Architectural Render" className="hero-image"  loading="lazy" />
-      </div>
-    </header>
-
-    
-    <div className="trust-stats-bar reveal-element" style={{display: `flex`, justifyContent: `center`, gap: `4rem`, flexWrap: `wrap`, padding: `2rem`, maxWidth: `1200px`, margin: `0 auto 4rem auto`, borderTop: `1px solid rgba(255,255,255,0.1)`, borderBottom: `1px solid rgba(255,255,255,0.1)`}}>
-      <div style={{display: `flex`, alignItems: `center`, gap: `1rem`}}>
-        <div style={{display: `flex`, marginLeft: `10px`}}>
-          <img src="https://i.pravatar.cc/100?img=11" style={{width: `40px`, height: `40px`, borderRadius: `50%`, border: `2px solid #09090b`, marginLeft: `-10px`}} loading="lazy" />
-          <img src="https://i.pravatar.cc/100?img=12" style={{width: `40px`, height: `40px`, borderRadius: `50%`, border: `2px solid #09090b`, marginLeft: `-10px`}} loading="lazy" />
-          <img src="https://i.pravatar.cc/100?img=33" style={{width: `40px`, height: `40px`, borderRadius: `50%`, border: `2px solid #09090b`, marginLeft: `-10px`}} loading="lazy" />
-        </div>
-        <div>
-          <div style={{fontWeight: `bold`, fontSize: `1.1rem`, color: `#fff`}}>2.68M+ users</div>
-          <div style={{fontSize: `0.85rem`, color: `var(--text-secondary)`}}>Got their spaces reimagined</div>
-        </div>
-      </div>
-      <div style={{display: `flex`, alignItems: `center`, gap: `1rem`}}>
-        <div>
-          <div style={{fontWeight: `bold`, fontSize: `1.1rem`, color: `#fff`}}>Rated Top-Notch</div>
-          <div style={{fontSize: `0.85rem`, color: `var(--text-secondary)`}}>from 1,300+ reviews</div>
-        </div>
-        <div style={{color: `#10b981`, fontSize: `1.2rem`, letterSpacing: `2px`}}>★★★★★</div>
-      </div>
-      <div style={{display: `flex`, alignItems: `center`, gap: `2rem`}}>
-        <div style={{textAlign: `center`}}>
-          <div style={{fontWeight: `bold`, color: `#fff`}}>7.75M+</div>
-          <div style={{fontSize: `0.8rem`, color: `var(--text-secondary)`}}>Projects</div>
-        </div>
-        <div style={{textAlign: `center`}}>
-          <div style={{fontWeight: `bold`, color: `#fff`}}>170+</div>
-          <div style={{fontSize: `0.8rem`, color: `var(--text-secondary)`}}>Countries</div>
-        </div>
-      </div>
-    </div>
+      <Hero />
 
     
     <section className="magic-scroll-section" id="how-it-works">
@@ -1351,10 +1277,7 @@ window.addEventListener('touchend', () => {
       </div>
     </section>
 
-    <footer className="footer">
-      <div className="logo">AURA</div>
-      <p>&copy; 2026 Aura AI Architecture.</p>
-    </footer>
+      <Footer />
 
     
     <div className="auth-overlay" id="auth-overlay" style={{display: `none`}}>
