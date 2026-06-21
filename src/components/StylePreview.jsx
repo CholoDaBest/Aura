@@ -55,6 +55,7 @@ export default function StylePreview() {
           <img id="style-img-industrial" src="/industrial_living.png" className="style-img" alt="Industrial Loft" loading="lazy" />
           <img id="style-img-japandi" src="/japandi_living.png" className="style-img" alt="Japandi" loading="lazy" />
           <img id="style-img-biophilic" src="/biophilic_living.png" className="style-img" alt="Biophilic Architecture" loading="lazy" />
+          <img id="style-img-cyberpunk" src="/cyberpunk_living.png" className="style-img" alt="Neon Cyberpunk" loading="lazy" />
         </div>
         
         <div className="style-chips-wrapper">
@@ -62,6 +63,7 @@ export default function StylePreview() {
           <button className="style-chip" data-style="industrial">Industrial Loft</button>
           <button className="style-chip" data-style="japandi">Japandi</button>
           <button className="style-chip" data-style="biophilic">Biophilic Architecture</button>
+          <button className="style-chip" data-style="cyberpunk">Neon Cyberpunk</button>
         </div>
       </div>
     </section>

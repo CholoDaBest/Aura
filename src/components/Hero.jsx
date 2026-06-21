@@ -21,9 +21,9 @@ function Hero() {
       <div className="trust-stats-bar reveal-element" style={{display: `flex`, justifyContent: `center`, gap: `4rem`, flexWrap: `wrap`, padding: `2rem`, maxWidth: `1200px`, margin: `0 auto 4rem auto`, borderTop: `1px solid rgba(255,255,255,0.1)`, borderBottom: `1px solid rgba(255,255,255,0.1)`}}>
         <div style={{display: `flex`, alignItems: `center`, gap: `1rem`}}>
           <div style={{display: `flex`, marginLeft: `10px`}}>
-            <img src="https://i.pravatar.cc/100?img=11" style={{width: `40px`, height: `40px`, borderRadius: `50%`, border: `2px solid #09090b`, marginLeft: `-10px`}} loading="lazy" />
-            <img src="https://i.pravatar.cc/100?img=12" style={{width: `40px`, height: `40px`, borderRadius: `50%`, border: `2px solid #09090b`, marginLeft: `-10px`}} loading="lazy" />
-            <img src="https://i.pravatar.cc/100?img=33" style={{width: `40px`, height: `40px`, borderRadius: `50%`, border: `2px solid #09090b`, marginLeft: `-10px`}} loading="lazy" />
+            <img src="/avatar_sarah.png" style={{width: `40px`, height: `40px`, borderRadius: `50%`, border: `2px solid #09090b`, marginLeft: `-10px`}} loading="lazy" />
+            <img src="/avatar_marcus.png" style={{width: `40px`, height: `40px`, borderRadius: `50%`, border: `2px solid #09090b`, marginLeft: `-10px`}} loading="lazy" />
+            <img src="/avatar_elena.png" style={{width: `40px`, height: `40px`, borderRadius: `50%`, border: `2px solid #09090b`, marginLeft: `-10px`}} loading="lazy" />
           </div>
           <div>
             <div style={{fontWeight: `bold`, fontSize: `1.1rem`, color: `#fff`}}>2.68M+ users</div>

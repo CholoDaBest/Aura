@@ -10,6 +10,7 @@ import Hero from '../components/Hero.jsx';
 import AuthModal from '../components/AuthModal.jsx';
 import BentoGrid from '../components/BentoGrid.jsx';
 import Testimonials from '../components/Testimonials.jsx';
+import PricingSection from '../components/PricingSection.jsx';
 import HowItWorks from '../components/HowItWorks.jsx';
 import StylePreview from '../components/StylePreview.jsx';
 import Features from '../components/Features.jsx';
@@ -98,17 +99,20 @@ export default function Home() {
     // ----------------------------------
     // Custom Cursor Follower
     // ----------------------------------
-    const cursorFollower = document.getElementById('cursor-follower');
+    const cursorFollower = document.getElementById('custom-cursor-follower');
+    const cursor = document.getElementById('custom-cursor');
     let onMouseMove;
     let tickerFn;
     
-    if (cursorFollower) {
+    if (cursorFollower && cursor) {
       let mouseX = 0, mouseY = 0;
       let followerX = 0, followerY = 0;
 
       onMouseMove = (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        gsap.set(cursor, { x: mouseX, y: mouseY });
+        
         if (e.target && typeof e.target.closest === 'function') {
           if (e.target.closest('a, button, .style-pill, .aura-card, .slider-container, .upload-container')) {
             cursorFollower.classList.add('active');
@@ -177,6 +181,13 @@ export default function Home() {
     <>
       <Navbar />
       <div className="home-container">
+        <div className="ambient-glow"></div>
+        <div className="grid-bg"></div>
+        <div className="grid-laser"></div>
+        <div className="grid-laser-2"></div>
+        <div className="glow-orb orb-left"></div>
+        <div className="glow-orb orb-right"></div>
+
         {!preloaderShown && (
           <div id="preloader" className="preloader">
             <div className="preloader-logo">Aura.</div>
@@ -185,9 +196,40 @@ export default function Home() {
             </div>
           </div>
         )}
-        <div id="cursor-follower" className="cursor-follower"></div>
+        <div className="custom-cursor" id="custom-cursor"></div>
+        <div className="custom-cursor-follower" id="custom-cursor-follower"></div>
         
         <Hero />
+        
+        <div className="aura-marquee-container">
+          <div className="aura-marquee-track">
+            <div className="aura-marquee-group">
+              <div className="aura-marquee-item">Trusted by 500+ Architecture Firms</div>
+              <div className="aura-marquee-separator"></div>
+              <div className="aura-marquee-item">Featured on ArchDaily</div>
+              <div className="aura-marquee-separator"></div>
+              <div className="aura-marquee-item">4K Render Certified</div>
+              <div className="aura-marquee-separator"></div>
+              <div className="aura-marquee-item">Real-Time Raytracing</div>
+              <div className="aura-marquee-separator"></div>
+              <div className="aura-marquee-item">AIA Award Winner 2026</div>
+              <div className="aura-marquee-separator"></div>
+            </div>
+            <div className="aura-marquee-group" aria-hidden="true">
+              <div className="aura-marquee-item">Trusted by 500+ Architecture Firms</div>
+              <div className="aura-marquee-separator"></div>
+              <div className="aura-marquee-item">Featured on ArchDaily</div>
+              <div className="aura-marquee-separator"></div>
+              <div className="aura-marquee-item">4K Render Certified</div>
+              <div className="aura-marquee-separator"></div>
+              <div className="aura-marquee-item">Real-Time Raytracing</div>
+              <div className="aura-marquee-separator"></div>
+              <div className="aura-marquee-item">AIA Award Winner 2026</div>
+              <div className="aura-marquee-separator"></div>
+            </div>
+          </div>
+        </div>
+
         <HowItWorks />
         <StylePreview />
         <Gallery />
@@ -195,6 +237,7 @@ export default function Home() {
         <UploadSection />
         <BentoGrid />
         <Testimonials />
+        <PricingSection />
         
         <Footer />
         <AuthModal />

@@ -29,7 +29,7 @@ function Navbar() {
         <div className="nav-links">
           <a href="/#how-it-works">How it works</a>
           <a href="/#features">Features</a>
-          <Link to="/pricing">Pricing</Link>
+          <a href="/#pricing">Pricing</a>
           <Link to="/dashboard" className="login-btn">Log in</Link>
         </div>
         <div className="nav-actions">
@@ -50,7 +50,7 @@ function Navbar() {
         <div className="mobile-nav-links">
           <a href="/#how-it-works">How it works</a>
           <a href="/#features">Features</a>
-          <Link to="/pricing">Pricing</Link>
+          <a href="/#pricing">Pricing</a>
           <Link to="/dashboard">Log in</Link>
           <button className="cta-button primary" style={{marginTop: `2rem`}}>Start Free Trial</button>
         </div>
